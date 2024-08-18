@@ -40,9 +40,14 @@ export class LoginComponent implements OnInit {
       this.usernameIpt.nativeElement.focus();
     }, 0);
 
-    if (this.authService.isAuthenticated()) {
-      this.router.navigate([this.previousRouteSvc.getPreviousUrl()]);
+
+
+    const previousUrl = this.previousRouteSvc.getPreviousUrl();
+    if (this.authService.isAuthenticated() && previousUrl) {
+      this.router.navigate([previousUrl]);
     }
+
+    
   }
 
   info(): void {
